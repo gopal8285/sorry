@@ -1,0 +1,297 @@
+/*
+    -------------------------------------------
+    GENERAL STYLING AND MOBILE-FIRST APPROACH
+    -------------------------------------------
+*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #fce4ec; /* Light pink background */
+    color: #4a4a4a;
+    line-height: 1.6;
+    text-align: center;
+    padding-top: 60px; /* Space for fixed navigation bar */
+    overflow-x: hidden; /* Prevents horizontal scroll on animations */
+}
+
+.page-container {
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1; /* Ensures content is above animations */
+}
+
+/*
+    -------------------------------------------
+    NAVIGATION BAR
+    -------------------------------------------
+*/
+nav {
+    background-color: #ff80b3; /* Bright pink nav bar */
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-item {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-item:hover {
+    background-color: #ff5e91;
+}
+
+/*
+    -------------------------------------------
+    HOME PAGE STYLING AND ANIMATIONS
+    -------------------------------------------
+*/
+.sorry-message {
+    font-size: 3em;
+    color: #d81b60;
+    animation: slideInText 1.5s ease-out;
+}
+
+@keyframes slideInText {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.heart-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.heart {
+    width: 100px;
+    height: 90px;
+    background-color: #e91e63;
+    position: relative;
+    transform: rotate(-45deg);
+    animation: pulse 1.5s infinite;
+}
+
+.heart::before,
+.heart::after {
+    content: '';
+    width: 100px;
+    height: 100px;
+    background-color: #e91e63;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.heart::before {
+    top: -50px;
+    left: 0;
+}
+
+.heart::after {
+    left: 50px;
+    top: 0;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1) rotate(-45deg); }
+    50% { transform: scale(1.1) rotate(-45deg); }
+    100% { transform: scale(1) rotate(-45deg); }
+}
+
+/*
+    -------------------------------------------
+    WHY I LOVE YOU PAGE STYLING AND ANIMATIONS
+    -------------------------------------------
+*/
+.love-reasons {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 30px;
+}
+
+.love-reason {
+    font-size: 1.5em;
+    margin: 20px 0;
+    background-color: #fff1f8;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.love-reason.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.love-reason .icon {
+    font-size: 1.2em;
+    margin-right: 10px;
+}
+
+/*
+    -------------------------------------------
+    PROMISE PAGE STYLING AND ANIMATIONS
+    -------------------------------------------
+*/
+.promise-page {
+    text-align: left;
+}
+
+.promise-text p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: #663366;
+}
+
+.floating-hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.floating-heart {
+    position: absolute;
+    bottom: -100px; /* Start below the viewport */
+    color: #ff69b4;
+    font-size: 2em;
+    opacity: 0;
+    animation: floatUp 10s linear infinite;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% {
+        transform: translateY(-100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/*
+    -------------------------------------------
+    SURPRISE PAGE STYLING AND ANIMATIONS
+    -------------------------------------------
+*/
+.cute-button {
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.cute-button:hover {
+    background-color: #ff4d94;
+    transform: translateY(-2px);
+}
+
+.cute-button:active {
+    transform: translateY(0);
+}
+
+.hidden-message {
+    display: none;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #fff0f5;
+    border: 2px solid #ff69b4;
+    border-radius: 15px;
+    font-size: 1.3em;
+    color: #d81b60;
+}
+
+/* Confetti animation */
+.confetti {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 999;
+}
+
+.confetti-piece {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #ff69b4;
+    border-radius: 50%;
+    animation: fall 3s forwards;
+    opacity: 0;
+}
+
+@keyframes fall {
+    from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/*
+    -------------------------------------------
+    RESPONSIVE DESIGN (for smaller screens)
+    -------------------------------------------
+*/
+@media (max-width: 768px) {
+    .sorry-message {
+        font-size: 2em;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 5px;
+        padding: 10px;
+    }
+
+    .nav-item {
+        padding: 5px 10px;
+    }
+
+    .love-reason {
+        font-size: 1.2em;
+    }
+}
